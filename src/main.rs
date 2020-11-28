@@ -2,12 +2,13 @@ mod settings;
 
 use settings::Settings;
 
-fn main() -> anyhow::Result<()> {
+#[tokio::main]
+async fn main() -> anyhow::Result<()> {
     init_logger();
-    run()
+    run().await
 }
 
-fn run() -> anyhow::Result<()> {
+async fn run() -> anyhow::Result<()> {
     let settings = Settings::new()?;
     println!("{:?}", settings);
 
